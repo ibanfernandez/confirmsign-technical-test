@@ -1,0 +1,235 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+@use 'sass:color';
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: $color-topbar-bg;
+  border-bottom: 1px solid $color-topbar-border;
+  box-shadow: $shadow-topbar;
+  font-size: $font-size-sm;
+
+  // ---- Code row (first line) ----
+  &__code-row {
+    text-align: center;
+    padding: $space-1 $space-4;
+    background: rgba(255, 255, 255, 0.6);
+    border-bottom: 1px solid $color-border-light;
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    letter-spacing: 0.02em;
+  }
+
+  &__code-label {
+    color: $color-text-muted;
+    margin-right: $space-1;
+  }
+
+  &__code-value {
+    font-weight: $font-weight-semibold;
+    font-family: $font-family-mono;
+    color: $color-text-primary;
+    font-size: $font-size-xs;
+  }
+
+  // ---- Meta row (sender/recipient) ----
+  &__meta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    padding: $space-1 $space-4;
+    border-bottom: 1px solid $color-border-light;
+    background: rgba(255, 255, 255, 0.4);
+
+    @include tablet {
+      flex-wrap: wrap;
+      gap: $space-1;
+      justify-content: flex-start;
+    }
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    padding: 2px $space-3;
+    border-right: 1px solid $color-topbar-border;
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    @include tablet {
+      border-right: none;
+      border-bottom: 1px solid $color-border-light;
+      width: 100%;
+      padding: 2px $space-2;
+    }
+  }
+
+  &__meta-label {
+    color: $color-text-muted;
+    margin-right: $space-1;
+  }
+
+  &__meta-value {
+    font-weight: $font-weight-medium;
+    color: $color-primary;
+  }
+
+  // ---- History rows ----
+  &__history {
+    overflow: hidden;
+  }
+
+  &__history-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $space-2 $space-4;
+    border-bottom: 1px solid $color-border-light;
+    transition: background $transition-fast;
+    gap: 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: $color-history-row-hover;
+    }
+
+    &--latest {
+      background: $color-history-latest-bg;
+      font-weight: $font-weight-medium;
+
+      &:hover {
+        background: color.adjust($color-history-latest-bg, $lightness: -3%);
+      }
+
+      .top-bar__history-description {
+        color: $color-primary;
+        font-weight: $font-weight-semibold;
+      }
+
+      .top-bar__history-meta-item {
+        color: $color-primary;
+        font-weight: $font-weight-semibold;
+      }
+
+      .top-bar__history-sep {
+        color: color.adjust($color-primary, $lightness: 15%);
+      }
+
+      .top-bar__history-meta-label {
+        color: color.adjust($color-primary, $lightness: 10%);
+      }
+    }
+
+    &--rejected {
+      background: $color-danger-bg;
+
+      .top-bar__history-description,
+      .top-bar__history-meta-item,
+      .top-bar__history-sep {
+        color: $color-danger;
+      }
+
+      .top-bar__history-meta-label {
+        color: $color-danger-light;
+      }
+    }
+
+    @include tablet {
+      grid-template-columns: auto 1fr;
+
+      .top-bar__history-sep,
+      .top-bar__history-meta-item {
+        display: none;
+      }
+    }
+  }
+
+  // ---- Toggle button ----
+  &__history-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+    background: none;
+    border: none;
+    color: $color-primary;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding: 0;
+    margin-right: $space-2;
+
+    &:hover {
+      color: $color-primary-light;
+    }
+  }
+
+  &__history-toggle-icon {
+    font-size: 10px;
+    display: inline-block;
+    transition: transform $transition-base;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__history-count {
+    font-size: $font-size-xs;
+    color: $color-text-muted;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  // ---- Description ----
+  &__history-description {
+    font-size: $font-size-xs;
+    color: $color-text-primary;
+    font-weight: $font-weight-medium;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // Sin flex:1, que sea su ancho natural
+  }
+
+  // ---- Separator | ----
+  &__history-sep {
+    color: $color-topbar-border;
+    padding: 0 $space-2;
+    user-select: none;
+    flex-shrink: 0;
+  }
+
+  // ---- Meta items (IP, SO, Nav) ----
+  &__history-meta-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $space-1;
+    font-size: $font-size-xs;
+    color: $color-text-secondary;
+    white-space: nowrap;
+    flex-shrink: 0;
+
+    &--ip  { width: 120px; }
+    &--so  { width: 90px; }
+    &--nav { width: 60px; }
+  }
+
+  &__history-meta-label {
+    color: $color-text-muted;
+  }
+}

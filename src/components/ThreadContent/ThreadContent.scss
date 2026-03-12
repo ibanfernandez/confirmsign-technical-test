@@ -1,0 +1,156 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.thread-card {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-card;
+  overflow: hidden;
+  margin-bottom: $space-6;
+
+  &__body {
+    padding: $space-8;
+
+    @include tablet {
+      padding: $space-5 $space-4;
+    }
+  }
+
+  &__content {
+    margin-bottom: $space-8;
+    padding-bottom: $space-6;
+    border-bottom: 1px solid $color-border-light;
+  }
+
+  &__forms {
+    margin-bottom: $space-6;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    padding-top: $space-4;
+    border-top: 1px solid $color-border-light;
+  }
+}
+
+// Accept Button
+.accept-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-8;
+  background: $color-primary;
+  color: white;
+  border: none;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background $transition-fast, transform $transition-fast, box-shadow $transition-fast;
+  box-shadow: 0 2px 8px rgba($color-primary, 0.3);
+
+  &:hover:not(:disabled) {
+    background: $color-primary-light;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($color-primary, 0.4);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+}
+
+// Accepted / Rejected banner
+.status-banner {
+  text-align: center;
+  border-top: 1px solid $color-border-light;
+
+  &__label {
+    padding: $space-4 $space-6;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    position: relative;
+
+    &--accepted {
+      @include diagonal-stripes($color-primary, #f0f9f4);
+      color: $color-primary;
+    }
+
+    &--rejected {
+      @include diagonal-stripes($color-danger, #fdf5f5);
+      color: $color-danger;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    justify-content: center;
+    gap: $space-3;
+    padding: $space-3 $space-4;
+    font-size: $font-size-sm;
+    border-top: 1px solid $color-border-light;
+
+    &--accepted {
+      color: $color-primary;
+      background: rgba($color-primary, 0.04);
+    }
+
+    &--rejected {
+      color: $color-danger;
+      background: rgba($color-danger, 0.04);
+    }
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: $space-1;
+
+    &::after {
+      content: '|';
+      margin-left: $space-3;
+      opacity: 0.3;
+    }
+
+    &:last-child::after {
+      display: none;
+    }
+  }
+}
+
+// Error inline
+.inline-error {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  padding: $space-3 $space-4;
+  background: $color-danger-bg;
+  border: 1px solid $color-danger-border;
+  border-radius: $radius-md;
+  color: $color-danger;
+  font-size: $font-size-sm;
+  margin-top: $space-4;
+}

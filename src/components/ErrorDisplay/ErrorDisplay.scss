@@ -1,0 +1,67 @@
+@use '../../styles/variables' as *;
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 40px 20px;
+  text-align: center;
+
+  &__icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: $color-danger;
+    margin-bottom: 8px;
+  }
+
+  &__message {
+    font-size: 0.875rem;
+    color: $color-text-secondary;
+    max-width: 400px;
+    line-height: 1.6;
+    background: $color-danger-bg;
+    border: 1px solid $color-danger-border;
+    border-radius: $radius-md;
+    padding: 12px 20px;
+  }
+}
+
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  padding: 40px 20px;
+  text-align: center;
+
+  &__code {
+    font-size: 5rem;
+    font-weight: 700;
+    color: $color-border;
+    line-height: 1;
+    font-family: $font-family-mono;
+    letter-spacing: -0.05em;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: $color-text-primary;
+    margin: 16px 0 8px;
+  }
+
+  &__description {
+    color: $color-text-muted;
+    font-size: 0.875rem;
+    max-width: 360px;
+  }
+}

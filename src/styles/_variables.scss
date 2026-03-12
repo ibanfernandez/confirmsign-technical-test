@@ -1,0 +1,87 @@
+// ============================================
+// DESIGN TOKENS
+// ============================================
+
+// Colors
+$color-primary: #2a7a4b;
+$color-primary-light: #3d9960;
+$color-primary-bg: #e8f5ee;
+$color-primary-border: #b3d9c2;
+
+$color-danger: #c0392b;
+$color-danger-light: #e74c3c;
+$color-danger-bg: #fdf0ef;
+$color-danger-border: #f1a9a0;
+
+$color-topbar-bg: #f0f7f3;
+$color-topbar-border: #c5dece;
+
+$color-text-primary: #1a2e23;
+$color-text-secondary: #4a6858;
+$color-text-muted: #7a9487;
+$color-text-highlight: $color-primary;
+
+$color-bg: #f8faf9;
+$color-surface: #ffffff;
+$color-border: #dde8e2;
+$color-border-light: #eef3f0;
+
+$color-history-latest-bg: #d4edda;
+$color-history-latest-text: $color-primary;
+$color-history-row-bg: #f8faf9;
+$color-history-row-hover: #eef5f1;
+
+$color-accepted-bg: #e8f5ee;
+$color-accepted-stripe: $color-primary;
+$color-rejected-bg: $color-danger-bg;
+$color-rejected-stripe: $color-danger;
+
+// Typography
+$font-family-base: 'IBM Plex Sans', -apple-system, sans-serif;
+$font-family-mono: 'IBM Plex Mono', 'Courier New', monospace;
+
+$font-size-xs: 0.7rem;
+$font-size-sm: 0.78rem;
+$font-size-base: 0.875rem;
+$font-size-md: 0.95rem;
+$font-size-lg: 1.05rem;
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+
+// Spacing
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-8: 32px;
+$space-10: 40px;
+$space-12: 48px;
+
+// Layout
+$topbar-height-collapsed: 56px;
+$content-max-width: 780px;
+$sidebar-offset: 80px;
+
+// Border radius
+$radius-sm: 3px;
+$radius-md: 6px;
+$radius-lg: 10px;
+
+// Shadows
+$shadow-card: 0 1px 3px rgba(0, 0, 0, 0.07), 0 4px 16px rgba(0, 0, 0, 0.05);
+$shadow-topbar: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 250ms ease;
+$transition-slow: 350ms ease;
+
+// Breakpoints
+$bp-mobile: 480px;
+$bp-tablet: 768px;
+$bp-desktop: 1024px;

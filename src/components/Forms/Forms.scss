@@ -1,0 +1,165 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.form-section {
+  margin-bottom: $space-6;
+
+  &__title {
+    font-size: $font-size-md;
+    font-weight: $font-weight-medium;
+    color: $color-text-secondary;
+    margin-bottom: $space-5;
+    padding-bottom: $space-3;
+    border-bottom: 1px solid $color-border-light;
+  }
+}
+
+.form-question {
+  display: flex;
+  gap: $space-6;
+  margin-bottom: $space-5;
+  align-items: flex-start;
+
+  @include tablet {
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__label {
+    flex: 0 0 220px;
+    font-size: $font-size-sm;
+    color: $color-primary;
+    padding-top: 2px;
+    font-weight: $font-weight-medium;
+
+    @include tablet {
+      flex: none;
+      width: 100%;
+    }
+
+    &--disabled {
+      color: $color-text-muted;
+    }
+  }
+
+  &__label-required {
+    color: $color-danger;
+    margin-left: 2px;
+  }
+
+  &__controls {
+    flex: 1;
+  }
+}
+
+// CHECK type
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: $space-2;
+}
+
+.checkbox-option {
+  display: flex;
+  align-items: center;
+  gap: $space-2;
+  cursor: pointer;
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &__input {
+    width: 18px;
+    height: 18px;
+    appearance: none;
+    -webkit-appearance: none;
+    border: 2px solid $color-border;
+    border-radius: $radius-sm;
+    background: $color-surface;
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+    transition: border-color $transition-fast, background $transition-fast;
+
+    &:checked {
+      border-color: $color-primary;
+      background: $color-primary;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 5px;
+        height: 9px;
+        border: 2px solid white;
+        border-top: none;
+        border-left: none;
+        transform: rotate(45deg);
+      }
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background: $color-bg;
+
+      &:checked {
+        background: $color-primary-bg;
+        border-color: $color-primary-border;
+
+        &::after {
+          border-color: $color-primary;
+        }
+      }
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    color: $color-primary;
+    user-select: none;
+
+    &--disabled {
+      color: $color-text-muted;
+    }
+  }
+}
+
+// TEXT type
+.text-input {
+  width: 100%;
+  padding: $space-3 $space-4;
+  border: 1px solid $color-border;
+  border-bottom: 2px solid $color-primary-border;
+  border-radius: $radius-sm $radius-sm 0 0;
+  font-family: $font-family-base;
+  font-size: $font-size-sm;
+  color: $color-text-primary;
+  background: $color-surface;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  outline: none;
+
+  &:focus {
+    border-color: $color-border;
+    border-bottom-color: $color-primary;
+    box-shadow: 0 2px 0 0 $color-primary;
+  }
+
+  &:disabled {
+    background: $color-bg;
+    color: $color-text-muted;
+    cursor: not-allowed;
+    border-bottom-color: $color-border;
+    box-shadow: none;
+  }
+
+  &::placeholder {
+    color: $color-text-muted;
+  }
+}

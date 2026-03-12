@@ -1,0 +1,57 @@
+@use 'variables' as *;
+
+// Responsive
+@mixin mobile {
+  @media (max-width: #{$bp-mobile}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: #{$bp-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$bp-desktop}) {
+    @content;
+  }
+}
+
+// Truncate text
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Flex center
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Focus ring
+@mixin focus-ring {
+  outline: 2px solid $color-primary;
+  outline-offset: 2px;
+}
+
+// Striped background (for accepted/rejected banner)
+@mixin diagonal-stripes($color, $bg) {
+  background: repeating-linear-gradient(
+    -45deg,
+    $bg,
+    $bg 6px,
+    rgba($color, 0.12) 6px,
+    rgba($color, 0.12) 12px
+  );
+}

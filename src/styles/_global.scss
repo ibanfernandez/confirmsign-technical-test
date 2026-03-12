@@ -1,0 +1,60 @@
+@use 'variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-regular;
+  color: $color-text-primary;
+  background-color: $color-bg;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input,
+textarea {
+  font-family: inherit;
+}
+
+// Thread content HTML rendering
+.thread-html-content {
+  font-size: $font-size-md;
+  line-height: 1.75;
+  color: $color-text-primary;
+
+  p { margin-bottom: $space-4; }
+  strong, b { font-weight: $font-weight-semibold; }
+  em, i { font-style: italic; }
+  ul, ol { padding-left: $space-6; margin-bottom: $space-4; }
+  li { margin-bottom: $space-1; }
+  h1, h2, h3, h4 { margin-bottom: $space-3; font-weight: $font-weight-semibold; }
+  a { color: $color-primary; }
+  br + br { display: none; }
+}

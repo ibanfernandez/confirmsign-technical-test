@@ -1,0 +1,28 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.thread-page {
+  min-height: 100vh;
+
+  &__main {
+    // Dynamic top padding — compensates for fixed TopBar height.
+    // The TopBar can grow when history is expanded, but we set a
+    // safe minimum that covers the collapsed state.
+    padding-top: calc(#{$topbar-height-collapsed} + 80px);
+    padding-bottom: $space-12;
+
+    @include tablet {
+      padding-top: calc(#{$topbar-height-collapsed} + 100px);
+    }
+  }
+
+  &__container {
+    max-width: $content-max-width;
+    margin: 0 auto;
+    padding: 0 $space-4;
+
+    @include mobile {
+      padding: 0 $space-3;
+    }
+  }
+}
