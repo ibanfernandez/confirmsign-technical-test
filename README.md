@@ -2,6 +2,10 @@
 
 Aplicación React desarrollada como prueba técnica para ConfirmSign. Permite visualizar y aceptar hilos de comunicación legal a través de la API de ConfirmSign.
 
+<br />
+
+<img src="./screenshot.png" alt="ConfirmSign Thread Viewer" style="max-width: 100%; height: auto;" />
+
 ## Tecnologías
 
 - **React** 18.2.0
